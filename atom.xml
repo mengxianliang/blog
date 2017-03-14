@@ -4,9 +4,9 @@
   
   <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://mengxianliang.com/blog/"/>
+  <link href="http://mengxianliang.github.io/blog/"/>
   <updated>2017-03-12T13:31:21.000Z</updated>
-  <id>http://mengxianliang.com/blog/</id>
+  <id>http://mengxianliang.github.io/blog/</id>
   
   <author>
     <name>孟宪亮</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hello My Blog ！</title>
-    <link href="http://mengxianliang.com/blog/2017/03/09/Hello%20My%20Blog%20%EF%BC%81/"/>
-    <id>http://mengxianliang.com/blog/2017/03/09/Hello My Blog ！/</id>
+    <link href="http://mengxianliang.github.io/blog/2017/03/09/Hello%20My%20Blog%20%EF%BC%81/"/>
+    <id>http://mengxianliang.github.io/blog/2017/03/09/Hello My Blog ！/</id>
     <published>2017-03-09T03:25:15.000Z</published>
     <updated>2017-03-12T13:31:21.000Z</updated>
     
@@ -32,10 +32,10 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://mengxianliang.com/blog/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://mengxianliang.github.io/blog/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="随笔" scheme="http://mengxianliang.com/blog/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://mengxianliang.github.io/blog/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
