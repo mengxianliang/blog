@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://mengxianliang.github.io/blog/"/>
-  <updated>2017-03-12T13:31:21.000Z</updated>
+  <updated>2017-03-17T09:55:40.000Z</updated>
   <id>http://mengxianliang.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图片横排显示测试</title>
+    <link href="http://mengxianliang.github.io/blog/2017/03/17/%E5%9B%BE%E7%89%87%E6%A8%AA%E6%8E%92%E6%98%BE%E7%A4%BA%E6%B5%8B%E8%AF%95/"/>
+    <id>http://mengxianliang.github.io/blog/2017/03/17/图片横排显示测试/</id>
+    <published>2017-03-17T09:47:18.000Z</published>
+    <updated>2017-03-17T09:55:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://github.com/mengxianliang/XLTieBaLoading/raw/master/Image/explain.png" alt="image-1" style="display: inline-block" width="200" height="200"><br><img src="https://github.com/mengxianliang/XLTieBaLoading/raw/master/Image/explain.png" alt="image-2" style="display: inline-block" width="200" height="200"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://github.com/mengxianliang/XLTieBaLoading/raw/master/Image/explain.png&quot; alt=&quot;image-1&quot; style=&quot;display: inline-block&quot; width
+    
+    </summary>
+    
+    
+      <category term="测试" scheme="http://mengxianliang.github.io/blog/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello My Blog ！</title>
