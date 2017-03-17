@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://mengxianliang.github.io/blog/"/>
-  <updated>2017-03-17T09:55:40.000Z</updated>
+  <updated>2017-03-17T14:58:35.000Z</updated>
   <id>http://mengxianliang.github.io/blog/</id>
   
   <author>
@@ -16,23 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>图片横排显示测试</title>
-    <link href="http://mengxianliang.github.io/blog/2017/03/17/%E5%9B%BE%E7%89%87%E6%A8%AA%E6%8E%92%E6%98%BE%E7%A4%BA%E6%B5%8B%E8%AF%95/"/>
-    <id>http://mengxianliang.github.io/blog/2017/03/17/图片横排显示测试/</id>
-    <published>2017-03-17T09:47:18.000Z</published>
-    <updated>2017-03-17T09:55:40.000Z</updated>
+    <title>My Second Blog</title>
+    <link href="http://mengxianliang.github.io/blog/2017/03/17/My-Second-Blog/"/>
+    <id>http://mengxianliang.github.io/blog/2017/03/17/My-Second-Blog/</id>
+    <published>2017-03-17T14:56:02.000Z</published>
+    <updated>2017-03-17T14:58:35.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://github.com/mengxianliang/XLTieBaLoading/raw/master/Image/explain.png" alt="image-1" style="display: inline-block" width="200" height="200"><br><img src="https://github.com/mengxianliang/XLTieBaLoading/raw/master/Image/explain.png" alt="image-2" style="display: inline-block" width="200" height="200"></p>
+    <content type="html"><![CDATA[<p>  之前一直在CSDN上写博客，时常有看到人家的个人博客，着实羡慕，所以就东施效颦弄了一个这样一个小站，今后会在这里继续边学习边整理的老套路，记录一下工作、学习中的点滴经验。</p>
+<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="http://oapjp6spr.bkt.clouddn.com/18210.jpg" alt=""></div><div class="group-picture-column" style="width: 50%;"><img src="http://oapjp6spr.bkt.clouddn.com/196232.jpg" alt=""></div></div><div class="group-picture-row"></div></div></div>
+<p>Hexo lalalalajflajsf封号福阿拉丁俊发腻好久佛爱家安居房垃圾搜if假按揭多否福哦啊接大佛爱U盾佛爱神的箭佛氨基酸的佛爱苏菲奥is就大佛阿斯U盾佛爱复苏哦</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://github.com/mengxianliang/XLTieBaLoading/raw/master/Image/explain.png&quot; alt=&quot;image-1&quot; style=&quot;display: inline-block&quot; width
+      &lt;p&gt;  之前一直在CSDN上写博客，时常有看到人家的个人博客，着实羡慕，所以就东施效颦弄了一个这样一个小站，今后会在这里继续边学习边整理的老套路，记录一下工作、学习中的点滴经验。&lt;/p&gt;
+&lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-
     
     </summary>
     
     
-      <category term="测试" scheme="http://mengxianliang.github.io/blog/tags/%E6%B5%8B%E8%AF%95/"/>
+  </entry>
+  
+  <entry>
+    <title>图片横排显示测试2</title>
+    <link href="http://mengxianliang.github.io/blog/2017/03/17/%E5%9B%BE%E7%89%87%E6%A8%AA%E6%8E%92%E6%98%BE%E7%A4%BA%E6%B5%8B%E8%AF%952/"/>
+    <id>http://mengxianliang.github.io/blog/2017/03/17/图片横排显示测试2/</id>
+    <published>2017-03-17T11:26:24.000Z</published>
+    <updated>2017-03-17T15:02:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>你好 这是我的一片测试博客 哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈 aha啦啦啦啦啦啦啦垃圾号我及哦啊见覅偶骄傲is就发哦i<br><a id="more"></a><br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="http://oapjp6spr.bkt.clouddn.com/18210.jpg" alt=""></div><div class="group-picture-column" style="width: 50%;"><img src="http://oapjp6spr.bkt.clouddn.com/196232.jpg" alt=""></div></div><div class="group-picture-row"></div></div></div></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;你好 这是我的一片测试博客 哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈 aha啦啦啦啦啦啦啦垃圾号我及哦啊见覅偶骄傲is就发哦i&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://mengxianliang.github.io/blog/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -41,7 +63,7 @@
     <link href="http://mengxianliang.github.io/blog/2017/03/09/Hello%20My%20Blog%20%EF%BC%81/"/>
     <id>http://mengxianliang.github.io/blog/2017/03/09/Hello My Blog ！/</id>
     <published>2017-03-09T03:25:15.000Z</published>
-    <updated>2017-03-12T13:31:21.000Z</updated>
+    <updated>2017-03-17T15:04:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>  之前一直在CSDN上写博客，时常有看到人家的个人博客，着实羡慕，所以就东施效颦弄了一个这样一个小站，今后会在这里继续边学习边整理的老套路，记录一下工作、学习中的点滴经验。</p>
 ]]></content>
