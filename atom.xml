@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://mengxianliang.github.io/blog/"/>
-  <updated>2017-04-13T02:27:12.000Z</updated>
+  <updated>2017-04-13T02:38:09.000Z</updated>
   <id>http://mengxianliang.github.io/blog/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://mengxianliang.github.io/blog/2017/04/13/iOS%20%E5%8A%A8%E7%94%BB%E8%A7%A3%E6%9E%90%20%E5%9C%86%E7%90%83%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB%20XLBallLoading/"/>
     <id>http://mengxianliang.github.io/blog/2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/</id>
     <published>2017-04-13T00:22:02.000Z</published>
-    <updated>2017-04-13T02:27:12.000Z</updated>
+    <updated>2017-04-13T02:38:09.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h2><p><img src="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="显示效果"></p>
+<a id="more"></a>
 <h2 id="一、原理分析"><a href="#一、原理分析" class="headerlink" title="一、原理分析"></a>一、原理分析</h2><h3 id="1、拆解动画"><a href="#1、拆解动画" class="headerlink" title="1、拆解动画"></a>1、拆解动画</h3><p>从效果图来看，动画可拆解成两部分：<code>放大动画</code>、<code>位移动画</code><br><code>放大动画</code> 比较简单，这里主要来分析一下<code>位移动画</code></p>
 <p><strong>(1)、先去掉缩放效果：</strong></p>
 <p><img src="http://img.blog.csdn.net/20170412172237518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="屏蔽放大效果"></p>
@@ -46,7 +47,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;显示效果&quot;&gt;&lt;a href=&quot;#显示效果&quot; class=&quot;headerlink&quot; title=&quot;显示效果&quot;&gt;&lt;/a&gt;显示效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20170412171114122?watermark
+      &lt;h2 id=&quot;显示效果&quot;&gt;&lt;a href=&quot;#显示效果&quot; class=&quot;headerlink&quot; title=&quot;显示效果&quot;&gt;&lt;/a&gt;显示效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;显示效果&quot;&gt;&lt;/p&gt;
     
     </summary>
     

@@ -89,26 +89,12 @@
 
 
 
-<meta name="description" content="显示效果
-一、原理分析1、拆解动画从效果图来看，动画可拆解成两部分：放大动画、位移动画放大动画 比较简单，这里主要来分析一下位移动画
-(1)、先去掉缩放效果：
-
-(2)、去掉其中的一个圆球
-
-现在基本可以看出主要原理就是让其中一个圆球绕另一个球做圆弧运动，只要确定一个圆球的运动轨迹，另一个圆球和它左相对运动即可。下面咱们重点说一下这个圆弧运动的原理。
-2、圆弧运动为了方便观察我们先放慢一下这个动画">
+<meta name="description" content="显示效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 动画解析 圆球加载动画 XLBallLoading">
 <meta property="og:url" content="http://mengxianliang.github.io/blog/2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/index.html">
 <meta property="og:site_name" content="孟宪亮的博客">
-<meta property="og:description" content="显示效果
-一、原理分析1、拆解动画从效果图来看，动画可拆解成两部分：放大动画、位移动画放大动画 比较简单，这里主要来分析一下位移动画
-(1)、先去掉缩放效果：
-
-(2)、去掉其中的一个圆球
-
-现在基本可以看出主要原理就是让其中一个圆球绕另一个球做圆弧运动，只要确定一个圆球的运动轨迹，另一个圆球和它左相对运动即可。下面咱们重点说一下这个圆弧运动的原理。
-2、圆弧运动为了方便观察我们先放慢一下这个动画">
+<meta property="og:description" content="显示效果">
 <meta property="og:image" content="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170412172237518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170412172645122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -116,17 +102,10 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20170413101903722?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170413101748443?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170413102335442?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-04-13T02:27:12.000Z">
+<meta property="og:updated_time" content="2017-04-13T02:38:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 动画解析 圆球加载动画 XLBallLoading">
-<meta name="twitter:description" content="显示效果
-一、原理分析1、拆解动画从效果图来看，动画可拆解成两部分：放大动画、位移动画放大动画 比较简单，这里主要来分析一下位移动画
-(1)、先去掉缩放效果：
-
-(2)、去掉其中的一个圆球
-
-现在基本可以看出主要原理就是让其中一个圆球绕另一个球做圆弧运动，只要确定一个圆球的运动轨迹，另一个圆球和它左相对运动即可。下面咱们重点说一下这个圆弧运动的原理。
-2、圆弧运动为了方便观察我们先放慢一下这个动画">
+<meta name="twitter:description" content="显示效果">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
@@ -432,6 +411,7 @@
 
       
         <h2 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h2><p><img src="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="显示效果"></p>
+<a id="more"></a>
 <h2 id="一、原理分析"><a href="#一、原理分析" class="headerlink" title="一、原理分析"></a>一、原理分析</h2><h3 id="1、拆解动画"><a href="#1、拆解动画" class="headerlink" title="1、拆解动画"></a>1、拆解动画</h3><p>从效果图来看，动画可拆解成两部分：<code>放大动画</code>、<code>位移动画</code><br><code>放大动画</code> 比较简单，这里主要来分析一下<code>位移动画</code></p>
 <p><strong>(1)、先去掉缩放效果：</strong></p>
 <p><img src="http://img.blog.csdn.net/20170412172237518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="屏蔽放大效果"></p>
