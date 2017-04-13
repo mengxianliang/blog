@@ -71,7 +71,7 @@
 <link href="/blog/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS动画," />
 
 
 
@@ -89,15 +89,45 @@
 
 
 
-<meta name="description" content="我的愿望是：不劳而获！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孟宪亮的博客">
-<meta property="og:url" content="http://mengxianliang.github.io/blog/index.html">
+<meta name="description" content="显示效果
+一、原理分析1、拆解动画从效果图来看，动画可拆解成两部分：放大动画、位移动画放大动画 比较简单，这里主要来分析一下位移动画
+(1)、先去掉缩放效果：
+
+(2)、去掉其中的一个圆球
+
+现在基本可以看出主要原理就是让其中一个圆球绕另一个球做圆弧运动，只要确定一个圆球的运动轨迹，另一个圆球和它左相对运动即可。下面咱们重点说一下这个圆弧运动的原理。
+2、圆弧运动为了方便观察我们先放慢一下这个动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 动画解析 圆球加载动画 XLBallLoading">
+<meta property="og:url" content="http://mengxianliang.github.io/blog/2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/index.html">
 <meta property="og:site_name" content="孟宪亮的博客">
-<meta property="og:description" content="我的愿望是：不劳而获！">
+<meta property="og:description" content="显示效果
+一、原理分析1、拆解动画从效果图来看，动画可拆解成两部分：放大动画、位移动画放大动画 比较简单，这里主要来分析一下位移动画
+(1)、先去掉缩放效果：
+
+(2)、去掉其中的一个圆球
+
+现在基本可以看出主要原理就是让其中一个圆球绕另一个球做圆弧运动，只要确定一个圆球的运动轨迹，另一个圆球和它左相对运动即可。下面咱们重点说一下这个圆弧运动的原理。
+2、圆弧运动为了方便观察我们先放慢一下这个动画">
+<meta property="og:image" content="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170412172237518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170412172645122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170412181029776?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170413101903722?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170413101748443?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170413102335442?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-04-13T02:27:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孟宪亮的博客">
-<meta name="twitter:description" content="我的愿望是：不劳而获！">
+<meta name="twitter:title" content="iOS 动画解析 圆球加载动画 XLBallLoading">
+<meta name="twitter:description" content="显示效果
+一、原理分析1、拆解动画从效果图来看，动画可拆解成两部分：放大动画、位移动画放大动画 比较简单，这里主要来分析一下位移动画
+(1)、先去掉缩放效果：
+
+(2)、去掉其中的一个圆球
+
+现在基本可以看出主要原理就是让其中一个圆球绕另一个球做圆弧运动，只要确定一个圆球的运动轨迹，另一个圆球和它左相对运动即可。下面咱们重点说一下这个圆弧运动的原理。
+2、圆弧运动为了方便观察我们先放慢一下这个动画">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
@@ -125,13 +155,13 @@
 
 
 
-  <link rel="canonical" href="http://mengxianliang.github.io/blog/"/>
+  <link rel="canonical" href="http://mengxianliang.github.io/blog/2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/"/>
 
 
 
 
 
-  <title> 孟宪亮的博客 </title>
+  <title> iOS 动画解析 圆球加载动画 XLBallLoading | 孟宪亮的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -166,9 +196,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -299,9 +327,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -331,10 +359,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/blog/2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/" itemprop="url">
-                  iOS 动画解析 圆球加载动画 XLBallLoading
-                </a>
+                iOS 动画解析 圆球加载动画 XLBallLoading
               
             
           </h1>
@@ -406,9 +431,7 @@
       
 
       
-        
-          
-            <h2 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h2><p><img src="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="显示效果"></p>
+        <h2 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h2><p><img src="http://img.blog.csdn.net/20170412171114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="显示效果"></p>
 <h2 id="一、原理分析"><a href="#一、原理分析" class="headerlink" title="一、原理分析"></a>一、原理分析</h2><h3 id="1、拆解动画"><a href="#1、拆解动画" class="headerlink" title="1、拆解动画"></a>1、拆解动画</h3><p>从效果图来看，动画可拆解成两部分：<code>放大动画</code>、<code>位移动画</code><br><code>放大动画</code> 比较简单，这里主要来分析一下<code>位移动画</code></p>
 <p><strong>(1)、先去掉缩放效果：</strong></p>
 <p><img src="http://img.blog.csdn.net/20170412172237518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="屏蔽放大效果"></p>
@@ -429,484 +452,66 @@
 <h3 id="5、缩放动画"><a href="#5、缩放动画" class="headerlink" title="5、缩放动画"></a>5、缩放动画</h3><p>在每次位移动画开始时执行缩放动画<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)animationDidStart:(<span class="built_in">CAAnimation</span> *)anim&#123;</div><div class="line">    </div><div class="line">    <span class="built_in">CGFloat</span> delay = <span class="number">0.3</span>f;</div><div class="line">    <span class="built_in">CGFloat</span> duration = [<span class="keyword">self</span> animationDuration]/<span class="number">2</span> - delay;</div><div class="line">    </div><div class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration delay:delay options:<span class="built_in">UIViewAnimationOptionCurveEaseOut</span>| <span class="built_in">UIViewAnimationOptionBeginFromCurrentState</span> animations:^&#123;</div><div class="line">        _ball1.transform = <span class="built_in">CGAffineTransformMakeScale</span>(ballScale, ballScale);</div><div class="line">        _ball2.transform = <span class="built_in">CGAffineTransformMakeScale</span>(ballScale, ballScale);</div><div class="line">        _ball3.transform = <span class="built_in">CGAffineTransformMakeScale</span>(ballScale, ballScale);</div><div class="line">    &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">        [<span class="built_in">UIView</span> animateWithDuration:duration delay:delay options:<span class="built_in">UIViewAnimationOptionCurveEaseInOut</span>| <span class="built_in">UIViewAnimationOptionBeginFromCurrentState</span> animations:^&#123;</div><div class="line">            _ball1.transform = <span class="built_in">CGAffineTransformIdentity</span>;</div><div class="line">            _ball2.transform = <span class="built_in">CGAffineTransformIdentity</span>;</div><div class="line">            _ball3.transform = <span class="built_in">CGAffineTransformIdentity</span>;</div><div class="line">        &#125; completion:<span class="literal">nil</span>];</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="6、动画循环"><a href="#6、动画循环" class="headerlink" title="6、动画循环"></a>6、动画循环</h3><p>在每次动画结束时从新执行动画<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)animationDidStop:(<span class="built_in">CAAnimation</span> *)anim finished:(<span class="built_in">BOOL</span>)flag&#123;</div><div class="line">    <span class="keyword">if</span> (_stopAnimationByUser) &#123;<span class="keyword">return</span>;&#125;</div><div class="line">    [<span class="keyword">self</span> startPathAnimate];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a><a href="https://github.com/mengxianliang/XLBallLoading" target="_blank" rel="external">Github地址</a></h2>
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mengxianliang.github.io/blog/blog/2017/03/17/图片横排显示测试2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="孟宪亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孟宪亮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/03/17/图片横排显示测试2/" itemprop="url">
-                  图片横排显示测试2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T19:26:24+08:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/blog/tags/iOS动画/" rel="tag"># iOS动画</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/blog/2017/03/17/图片横排显示测试2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/图片横排显示测试2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/blog/2017/03/17/图片横排显示测试2/" class="leancloud_visitors" data-flag-title="图片横排显示测试2">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          <p>你好 这是我的一片测试博客 哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈啊哈哈哈 aha啦啦啦啦啦啦啦垃圾号我及哦啊见覅偶骄傲is就发哦i<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/blog/2017/03/17/图片横排显示测试2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/03/17/图片横排显示测试2/" rel="next" title="图片横排显示测试2">
+                <i class="fa fa-chevron-left"></i> 图片横排显示测试2
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mengxianliang.github.io/blog/blog/2017/03/09/Hello My Blog ！/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="孟宪亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孟宪亮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/03/09/Hello My Blog ！/" itemprop="url">
-                  Hello My Blog ！
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-09T11:25:15+08:00">
-                2017-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/blog/2017/03/09/Hello My Blog ！/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/Hello My Blog ！/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/blog/2017/03/09/Hello My Blog ！/" class="leancloud_visitors" data-flag-title="Hello My Blog ！">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>  之前一直在CSDN上写博客，时常有看到人家的个人博客，着实羡慕，所以就东施效颦弄了一个这样一个小站，今后会在这里继续边学习边整理的老套路，记录一下工作、学习中的点滴经验。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mengxianliang.github.io/blog/blog/2017/01/17/My-Second-Blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="孟宪亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="孟宪亮的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/01/17/My-Second-Blog/" itemprop="url">
-                  My Second Blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-17T22:56:02+08:00">
-                2017-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/blog/2017/01/17/My-Second-Blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/My-Second-Blog/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/blog/2017/01/17/My-Second-Blog/" class="leancloud_visitors" data-flag-title="My Second Blog">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  之前一直在CSDN上写博客，时常有看到人家的个人博客，着实羡慕，所以就东施效颦弄了一个这样一个小站，今后会在这里继续边学习边整理的老套路，记录一下工作、学习中的点滴经验。</p>
-<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="http://oapjp6spr.bkt.clouddn.com/18210.jpg" alt=""></div><div class="group-picture-column" style="width: 50%;"><img src="http://oapjp6spr.bkt.clouddn.com/196232.jpg" alt=""></div></div><div class="group-picture-row"></div></div></div>
-<p>Hexo lalalalajflajsf封号福阿拉丁俊发腻好久佛爱家安居房垃圾搜if假按揭多否福哦啊接大佛爱U盾佛爱神的箭佛氨基酸的佛爱苏菲奥is就大佛阿斯U盾佛爱复苏哦</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
           
           </div>
@@ -914,6 +519,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/"
+           data-title="iOS 动画解析 圆球加载动画 XLBallLoading" data-url="http://mengxianliang.github.io/blog/blog/2017/04/13/iOS 动画解析 圆球加载动画 XLBallLoading/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -933,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/blog/images/avatar.png"
@@ -1041,6 +663,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示效果"><span class="nav-number">1.</span> <span class="nav-text">显示效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、原理分析"><span class="nav-number">2.</span> <span class="nav-text">一、原理分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、拆解动画"><span class="nav-number">2.1.</span> <span class="nav-text">1、拆解动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、圆弧运动"><span class="nav-number">2.2.</span> <span class="nav-text">2、圆弧运动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实现代码"><span class="nav-number">3.</span> <span class="nav-text">二、实现代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2、第二段运动"><span class="nav-number">3.1.</span> <span class="nav-text">2、第二段运动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、第三段运动"><span class="nav-number">3.2.</span> <span class="nav-text">3、第三段运动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、位移动画"><span class="nav-number">3.3.</span> <span class="nav-text">4、位移动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、缩放动画"><span class="nav-number">3.4.</span> <span class="nav-text">5、缩放动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、动画循环"><span class="nav-number">3.5.</span> <span class="nav-text">6、动画循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github地址"><span class="nav-number">4.</span> <span class="nav-text">Github地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1153,6 +791,10 @@
 
 
   
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
