@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://mengxianliang.github.io/blog/"/>
-  <updated>2017-04-13T02:38:09.000Z</updated>
+  <updated>2017-04-17T04:57:27.000Z</updated>
   <id>http://mengxianliang.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS 动画解析 支付宝支付动画 上</title>
+    <link href="http://mengxianliang.github.io/blog/2017/04/17/iOS%20%E5%8A%A8%E7%94%BB%E8%A7%A3%E6%9E%90%20%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E5%8A%A8%E7%94%BB%20%E4%B8%8A/"/>
+    <id>http://mengxianliang.github.io/blog/2017/04/17/iOS 动画解析 支付宝支付动画 上/</id>
+    <published>2017-04-17T04:55:43.000Z</published>
+    <updated>2017-04-17T04:57:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>平时在用支付宝付款时，会有一个支付中的动画和一个支付完成的动画。这篇博客主要分析一下 <strong>支付中</strong> 的动画效果，效果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170417102022525?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="支付宝支付动画"></p>
+<a id="more"></a>
+<h2 id="一、动画解析"><a href="#一、动画解析" class="headerlink" title="一、动画解析"></a>一、动画解析</h2><p>为了方便观察，添加了放慢加载动画的速度并添加辅助线：</p>
+<p><img src="http://img.blog.csdn.net/20170417113801866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="放慢后的动画"></p>
+<p>从图中可以看出：加载圆弧运动轨迹可分为<code>前半段</code>和<code>后半段</code>；并且圆弧的起始角度(StartAngle)和结束角度(EndAngle)在做有规律的变化；</p>
+<p><strong>前半段:</strong> 从-0.5π到π，这一段运动中速度较快；StartAngle不变，始终未-0.5π；EndAngle在匀速上升，一直到π；前半段中圆弧不断变长，最后形成一个3/4的圆。</p>
+<p><strong>后半段:</strong> 从π到1.5π，这一段运动速度较慢；StartAngle开始变化，从-0.5π变化到1.5π；EndAngle从π变化到1.5π，最后StartAngle和EndAngle重合于1.5π；后半段中圆弧不断变长，最后直至消失。</p>
+<h2 id="二、实现代码"><a href="#二、实现代码" class="headerlink" title="二、实现代码"></a>二、实现代码</h2><p>1、初始化一些全局属性<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="comment">//刷新工具</span></div><div class="line">    <span class="built_in">CADisplayLink</span> *_link;</div><div class="line">    <span class="comment">//显示圆环</span></div><div class="line">    <span class="built_in">CAShapeLayer</span> *_animationLayer;</div><div class="line">    <span class="comment">//起始角度</span></div><div class="line">    <span class="built_in">CGFloat</span> _startAngle;</div><div class="line">    <span class="comment">//结束角度</span></div><div class="line">    <span class="built_in">CGFloat</span> _endAngle;</div><div class="line">    <span class="comment">//当前动画进度</span></div><div class="line">    <span class="built_in">CGFloat</span> _progress;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、界面刷新工作由CADisplayLink来完成<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_link = [<span class="built_in">CADisplayLink</span> displayLinkWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(displayLinkAction)];</div><div class="line">[_link addToRunLoop:[<span class="built_in">NSRunLoop</span> mainRunLoop] forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</div><div class="line">_link.paused = <span class="literal">true</span>;</div></pre></td></tr></table></figure></p>
+<p>为了实现<strong>前半段</strong>和<strong>后半段</strong>的速度区别，定义了一个速度方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)speed&#123;</div><div class="line">    <span class="keyword">if</span> (_endAngle &gt; M_PI) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0.1</span>/<span class="number">60.0</span>f;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0.8</span>/<span class="number">60.0</span>f;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过CADisplayLink刷新进度，进度增长的快慢有speed决定：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)displayLinkAction&#123;</div><div class="line">    _progress += [<span class="keyword">self</span> speed];</div><div class="line">    <span class="keyword">if</span> (_progress &gt;= <span class="number">1</span>) &#123;</div><div class="line">        _progress = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    [<span class="keyword">self</span> updateAnimationLayer];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>刷新贝塞尔曲线的StartAngle和EndAngle实现曲线的运动：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)updateAnimationLayer&#123;</div><div class="line">    </div><div class="line">    _startAngle = -M_PI_2;</div><div class="line">    _endAngle = -M_PI_2 +_progress * M_PI * <span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (_endAngle &gt; M_PI) &#123;</div><div class="line">        <span class="built_in">CGFloat</span> progress1 = <span class="number">1</span> - (<span class="number">1</span> - _progress)/<span class="number">0.25</span>;</div><div class="line">        _startAngle = -M_PI_2 + progress1 * M_PI * <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">CGFloat</span> radius = _animationLayer.bounds.size.width/<span class="number">2.0</span>f - lineWidth/<span class="number">2.0</span>f;</div><div class="line">    <span class="built_in">CGFloat</span> centerX = _animationLayer.bounds.size.width/<span class="number">2.0</span>f;</div><div class="line">    <span class="built_in">CGFloat</span> centerY = _animationLayer.bounds.size.height/<span class="number">2.0</span>f;</div><div class="line">    <span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="built_in">CGPointMake</span>(centerX, centerY) radius:radius startAngle:_startAngle endAngle:_endAngle clockwise:<span class="literal">true</span>];</div><div class="line">    path.lineCapStyle = kCGLineCapRound;</div><div class="line">    </div><div class="line">    _animationLayer.path = path.CGPath;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="https://github.com/mengxianliang/XLPaymentHUD" target="_blank" rel="external">Github</a></h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平时在用支付宝付款时，会有一个支付中的动画和一个支付完成的动画。这篇博客主要分析一下 &lt;strong&gt;支付中&lt;/strong&gt; 的动画效果，效果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20170417102022525?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI4MjUwNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;支付宝支付动画&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS动画" scheme="http://mengxianliang.github.io/blog/tags/iOS%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS 动画解析 圆球加载动画 XLBallLoading</title>
