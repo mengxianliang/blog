@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://mengxianliang.github.io/blog/"/>
-  <updated>2017-04-17T08:13:24.000Z</updated>
+  <updated>2017-06-06T09:50:16.000Z</updated>
   <id>http://mengxianliang.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS自动打包并发布到Fir.im</title>
+    <link href="http://mengxianliang.github.io/blog/2017/06/06/iOS%E8%87%AA%E5%8A%A8%E6%89%93%E5%8C%85%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0Fir.im/"/>
+    <id>http://mengxianliang.github.io/blog/2017/06/06/iOS自动打包并发布到Fir.im/</id>
+    <published>2017-06-06T09:00:00.000Z</published>
+    <updated>2017-06-06T09:50:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>最近公司有个新需求，就是后台要添加一个新功能，在页面上更换App的标题、Logo等信息，然后可以自动生成apk和ipa文件。于是就研究了一下自动打包ipa这个功能</p>
+<a id="more"></a>
+<h2 id="二、牛逼的工具fastlane"><a href="#二、牛逼的工具fastlane" class="headerlink" title="二、牛逼的工具fastlane"></a>二、牛逼的工具fastlane</h2><p><a href="https://github.com/fastlane/fastlane" target="_blank" rel="external">fastlane</a>这个工具牛逼之处就是几乎包含了和ipa相关的所有功能，例如打包、提交审核、测试、自动截屏等等。这里就主要介绍一下其中的打包工具gym。</p>
+<h2 id="三、实现原理简介"><a href="#三、实现原理简介" class="headerlink" title="三、实现原理简介"></a>三、实现原理简介</h2><h3 id="1、安装fastlane"><a href="#1、安装fastlane" class="headerlink" title="1、安装fastlane"></a>1、安装fastlane</h3><p>这里先说一下fastlane的安装，很简单只需在终端输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo gem install fastlane</div></pre></td></tr></table></figure></p>
+<p>(需提前安装gem环境)</p>
+<h3 id="2、使用gym工具"><a href="#2、使用gym工具" class="headerlink" title="2、使用gym工具"></a>2、使用gym工具</h3><p>在安装fastlane时已默认安装了常用工具，所以不需要另外安装gym工具</p>
+<p>调用gym需要cd到项目目录，然后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastlane gym</div></pre></td></tr></table></figure></p>
+<p>这个命令是自动打包然后推送到ITunesConnect中，在这个过程中需要输入AppId及密码。</p>
+<p>如果不需要提交到ITunesConnet中，可执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fastlane gym --export_method ad-hoc</div></pre></td></tr></table></figure></p>
+<p>会自动生成ipa文件，以便后续操作。<br>详细的gym命令请参考<a href="https://github.com/fastlane/fastlane/tree/master/gym" target="_blank" rel="external">gym文档</a></p>
+<h3 id="3、使用fir"><a href="#3、使用fir" class="headerlink" title="3、使用fir"></a>3、使用fir</h3><p>之前一直是在fir的页面上进行操作，也是第一次在命令行使用fir。<br>安装 <a href="https://github.com/FIRHQ/fir-cli" target="_blank" rel="external">fir-cli</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem install fir-cli</div></pre></td></tr></table></figure></p>
+<p>安装后可以先执行登陆操作，登陆后在后续操作中可以不用重复添加token了(token需要到fir个人账号中获得)，登陆方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fir login XXX_YOUR_API_TOKEN_XXX</div></pre></td></tr></table></figure></p>
+<p>发布ipa到fir，需要提前准备好ipa文件，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ fir publish APP_FILE_PATH</div></pre></td></tr></table></figure></p>
+<h2 id="四、自动化打包"><a href="#四、自动化打包" class="headerlink" title="四、自动化打包"></a>四、自动化打包</h2><p>为了实现一键打包的方案，需要将gym和fir结合到一起，这里利用了一个脚本文件，在使用时直接执行这个脚本文件即可,文件内容如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">#设置超时</div><div class="line">export FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT=120</div><div class="line"></div><div class="line">#计时</div><div class="line">SECONDS=0</div><div class="line"></div><div class="line">#假设脚本放置在与项目相同的路径下</div><div class="line">project_path=$(pwd)</div><div class="line">#取当前时间字符串添加到文件结尾</div><div class="line">now=$(date +&quot;%Y_%m_%d_%H_%M_%S&quot;)</div><div class="line"></div><div class="line">#指定项目的scheme名称</div><div class="line">scheme=&quot;Demo&quot;</div><div class="line">#指定要打包的配置名</div><div class="line">configuration=&quot;Adhoc&quot;</div><div class="line">#指定打包所使用的输出方式，目前支持app-store, package, ad-hoc, enterprise, development, 和developer-id，即xcodebuild的method参数</div><div class="line">export_method=&apos;ad-hoc&apos;</div><div class="line"></div><div class="line">#指定项目地址</div><div class="line">workspace_path=&quot;$project_path/Demo.xcworkspace&quot;</div><div class="line">#指定输出路径</div><div class="line">output_path=&quot;$project_path/IPA&quot;</div><div class="line">#指定输出归档文件地址</div><div class="line">archive_path=&quot;$output_path/Demo_$&#123;now&#125;.xcarchive&quot;</div><div class="line">#指定输出ipa地址</div><div class="line">ipa_path=&quot;$output_path/Demo_$&#123;now&#125;.ipa&quot;</div><div class="line">#指定输出ipa名称</div><div class="line">ipa_name=&quot;Demo_$&#123;now&#125;.ipa&quot;</div><div class="line">#获取执行命令时的commit message</div><div class="line">commit_msg=&quot;$1&quot;</div><div class="line"></div><div class="line">#输出设定的变量值</div><div class="line">echo &quot;===workspace path: $&#123;workspace_path&#125;===&quot;</div><div class="line">echo &quot;===archive path: $&#123;archive_path&#125;===&quot;</div><div class="line">echo &quot;===ipa path: $&#123;ipa_path&#125;===&quot;</div><div class="line">echo &quot;===export method: $&#123;export_method&#125;===&quot;</div><div class="line">echo &quot;===commit msg: $1===&quot;</div><div class="line"></div><div class="line">#先清空前一次build</div><div class="line">fastlane gym --workspace $&#123;workspace_path&#125; --scheme $&#123;scheme&#125; --clean --configuration $&#123;configuration&#125; --archive_path $&#123;archive_path&#125; --export_method $&#123;export_method&#125; --output_directory $&#123;output_path&#125; --output_name $&#123;ipa_name&#125;</div><div class="line"></div><div class="line">#上传到fir</div><div class="line">fir publish $&#123;ipa_path&#125; -T &quot;XXX_YOUR_API_TOKEN_XXX&quot; -c &quot;$&#123;commit_msg&#125;&quot;</div><div class="line"></div><div class="line">#输出总用时</div><div class="line">echo &quot;===Finished. Total time: $&#123;SECONDS&#125;s===&quot;</div></pre></td></tr></table></figure></p>
+<p>（1、使用该文件需要项目支持CocoaPods；2、本项目的项目名称是<code>Demo</code>,在实际使用时需要将<code>Demo</code>替换成自己的项目名称；3、需要将<code>XXX_YOUR_API_TOKEN_XXX</code> 换成自己的fir token）</p>
+<p>如文件名文<code>AutoPack.sh</code>,打包时只需要在cd到项目文件下，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./AutoPack.sh</div></pre></td></tr></table></figure></p>
+<p>执行后会自动打包，ipa文件自动存储到工程文件同目录下的IPA文件夹下，并且会自动提交到Fir上，整个流程执行结束后会提示完成时间，如出现错误也会打印出来。</p>
+<h2 id="五、遇到的问题"><a href="#五、遇到的问题" class="headerlink" title="五、遇到的问题"></a>五、遇到的问题</h2><p>在执行上传到Fir上的时候遇到了SSL证书报错，最后找了半天原因是Ruby的数据源地址使用的https地址，换成http地址即可。<a href="https://github.com/FIRHQ/fir-cli/issues/122" target="_blank" rel="external">解决办法戳这里</a></p>
+<h2 id="六、参考"><a href="#六、参考" class="headerlink" title="六、参考"></a>六、参考</h2><p>1、<a href="http://www.jianshu.com/p/54ab07f2e63b/" target="_blank" rel="external">使用fastlane gym/xctool编写ipa打包脚本</a><br>2、<a href="http://www.jianshu.com/p/edcd8d9430f6" target="_blank" rel="external">Fastlane自动化构建工具(完整解决测试和发布流程)</a><br>3、<a href="https://juejin.im/post/58c237cd44d9040068e80be1" target="_blank" rel="external">Fastlane + Bugly自动化部署测试包</a><br>4、<a href="https://github.com/mythkiven/AD_Fastlane" target="_blank" rel="external">iOS App 自动化上传 AppStore ,一键部署 App</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;一、前言&quot;&gt;&lt;a href=&quot;#一、前言&quot; class=&quot;headerlink&quot; title=&quot;一、前言&quot;&gt;&lt;/a&gt;一、前言&lt;/h2&gt;&lt;p&gt;最近公司有个新需求，就是后台要添加一个新功能，在页面上更换App的标题、Logo等信息，然后可以自动生成apk和ipa文件。于是就研究了一下自动打包ipa这个功能&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="自动打包" scheme="http://mengxianliang.github.io/blog/tags/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS 动画解析 支付宝支付动画 下</title>
